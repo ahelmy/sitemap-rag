@@ -9,9 +9,8 @@ COPY requirements.txt .
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
 # Copy the rest of the application code into the container
 COPY . .
 
 # Specify the command to run on container start
-ENTRYPOINT [ "gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "main:app"]
+ENTRYPOINT ["/app/bin/entrypoint.sh"]
